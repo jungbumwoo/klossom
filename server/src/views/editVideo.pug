@@ -1,0 +1,11 @@
+extends layouts/main
+
+block content
+    .editVideo
+        h5.abc=video.title
+        span.fasdf=video.description
+    .form-container
+        form(action=`/videos/${video.id}/edit   `, method="post" enctype="multipart/form-data")
+            input(type="text", placeholder=`${video.title}`, name="title", required=true)
+            textarea(name="description", placeholder=`${video.description}`, required=true)
+            input(type="submit", value="Edit")
