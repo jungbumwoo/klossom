@@ -39,8 +39,7 @@ export const videoDetail = async (req, res) => {
     console.log(`error is occured. in videoDetail, videoController!`);
     console.log(err);
     res.redirect(routes.home);
-  }
-  
+  };
 };
 
 export const getEditVideo = async(req, res) => {
@@ -59,6 +58,22 @@ export const getEditVideo = async(req, res) => {
   }
 };
 
-export const postEditVideo = (req, res) => {
-  
+export const postEditVideo = async(req, res) => {
+  const { params: {id}} = req;
+  const {
+    body: { title, description }
+  } = req;
+  console.log(title, description);
+  try {
+    const editVideo = await Video.findOneAndUpdate({id}, {
+      title,
+      description
+    });
+    console.log(editVideo);
+    res.redirect(routes.videoDetail(editVideo.id));
+  } catch(err) {
+    console.log(`error is occuered at postEditVideo In videoController`);
+    console.log(err);
+    res.render("editVideo");
+  }
 };

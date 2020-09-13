@@ -16,15 +16,16 @@ const PORT = 3000;
 
 app.use(helmet());
 app.use(logger("dev"));
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 app.set('view engine', 'pug'); // (1)
 app.use("/uploads", express.static("uploads"));
 app.set('views', path.join(__dirname, '/src/views')); // (2)
-
 app.use(localMiddleware);
+
 app.use(routes.home, globalRouter);
 app.use(routes.video, videoRouter);
 
