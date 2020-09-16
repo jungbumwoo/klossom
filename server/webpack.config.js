@@ -1,43 +1,42 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractCSS = require("extract-text-webpack-plugin");
 
 const MODE = process.env.WEBPACK_ENV;
-const ENTRY_FILE = path.resolve(__dirname, "./src/assets", "./src/js", "./src/main.js");
-const OUTPUT_DIR = path.join(__dirname, "./src/static");
+const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
+const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config = {
-    entry: ENTRY_FILE,
-    mode: MODE,
-    plugins: [new MiniCssExtractPlugin()],
-    module: {
-        rules: [
-            {
-                test: /\.(scss)$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: "css-loader"
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            plugin() {
-                                return [autoprefixer({ browsers: "cover 99.5%"})];
-                            }
-                        }
-                    },
-                    {
-                        loader: "sass-loader"
-                    }
-                ]
+  entry: ENTRY_FILE,
+  mode: MODE,
+  module: {
+    rules: [
+      {
+        test: /\.(scss)$/,
+        use: ExtractCSS.extract([
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              plugin() {
+                return [autoprefixer({ browsers: "cover 99.5%" })];
+              }
             }
-        ]
-    },
-    output: {
-        path: OUTPUT_DIR,
-        filename: "[name].js"
-    }
+          },
+          {
+            loader: "sass-loader"
+          }
+        ])
+      }
+    ]
+  },
+  output: {
+    path: OUTPUT_DIR,
+    filename: "[name].js"
+  },
+  plugins: [new ExtractCSS("styles.css")]
 };
 
 module.exports = config;
