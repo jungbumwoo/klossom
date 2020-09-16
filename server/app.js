@@ -9,7 +9,6 @@ import routes from "./src/routers/routes";
 import globalRouter from "./src/routers/globalRouter/globalRouter";
 import videoRouter from "./src/routers/VideoRouter/videoRouter";
 
-
 const app = express();
 
 const PORT = 3000;
@@ -20,14 +19,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
-app.set('view engine', 'pug'); // (1)
+app.set("view engine", "pug"); // (1)
 app.use("/uploads", express.static("uploads"));
-app.set('views', path.join(__dirname, '/src/views')); // (2)
+app.set("views", path.join(__dirname, "/src/views")); // (2)
 app.use(localMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.video, videoRouter);
-
 
 export default app;

@@ -9,3 +9,5 @@ block content
             input(type="text", placeholder=`${video.title}`, name="title", required=true)
             textarea(placeholder=`${video.description}`, name="description", required=true)
             input(type="submit", value="Edit")
+    .delete-video
+        a(href=routes.deleteVideo(video.id)) Delete Video
