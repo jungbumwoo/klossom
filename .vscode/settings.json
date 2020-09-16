@@ -1,0 +1,9 @@
+{
+  "workbench.colorTheme": "Material Theme",
+  "workbench.iconTheme": "material-icon-theme",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
+  "editor.fontFamily": "MesloLGS NF",
+  "terminal.integrated.fontWeightBold": "900",
+  "terminal.integrated.fontWeight": "bold"
+}
