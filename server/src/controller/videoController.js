@@ -3,7 +3,7 @@ import Video from "../../models/Video";
 
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).sort({ _id: -1 });
     res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     console.log(error);
@@ -11,11 +11,20 @@ export const home = async (req, res) => {
   }
 };
 
-export const search = (req, res) => {
+export const search = async(req, res) => {
   const {
     query: { term: searchingBy },
   } = req;
-  res.render("search", { pageTitle: "Search", searchingBy });
+  console.log(searchingBy);
+  let videos = [];
+  try {
+    videos= await Video.find({
+      title: { $regex: searchingBy, $options: "i" }
+    });
+  } catch(error) {
+    console.log(error);
+  }
+  res.render("search", { pageTitle: "Search", searchingBy, videos });
 };
 
 export const upload = (req, res) => {
@@ -88,10 +97,6 @@ export const postEditVideo = async (req, res) => {
   }
 };
 
-export const postDeleteVideo = (req, res) => {
-  res.render("home");
-};
-
 export const getDeleteVideo = async (req, res) => {
   const {
     params: { id },
@@ -99,7 +104,8 @@ export const getDeleteVideo = async (req, res) => {
   try {
     await Video.remove({ _id: id });
     res.redirect(`/`);
-  } catch {
+  } catch(error) {
+    console.log(error);
     res.redirect(routes.editVideo(id));
   }
 };
