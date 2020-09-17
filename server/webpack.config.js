@@ -23,8 +23,16 @@ const config = {
           {
             loader: "postcss-loader",
             options: {
-              plugin() {
-                return [autoprefixer({ browsers: "cover 99.5%" })];
+              postcssOptions: {
+                plugins: [
+                  [
+                    'autoprefixer',
+                    {
+                      //options
+                      browsers: "cover 99.5%"
+                    },
+                  ]
+                ]
               }
             }
           },
@@ -49,3 +57,15 @@ const config = {
 };
 
 module.exports = config;
+
+
+/*
+          {
+            loader: "postcss-loader",
+            options: {
+              plugin() {
+                return [autoprefixer({ browsers: "cover 99.5%" })];
+              }
+            }
+          },
+*/
