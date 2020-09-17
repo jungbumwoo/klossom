@@ -21,6 +21,7 @@ app.use(cookieParser());
 
 app.set("view engine", "pug"); // (1)
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("static"));
 app.set("views", path.join(__dirname, "/src/views")); // (2)
 app.use(localMiddleware);
 
