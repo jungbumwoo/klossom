@@ -11,10 +11,8 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cross-env": "^7.0.2",
-    "css-loader": "1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "extract-text-webpack-plugin": "^3.0.2",
     "helmet": "^4.1.0",
     "mongoose": "^5.10.4",
     "morgan": "^1.10.0",
@@ -22,11 +20,7 @@
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
-    "postcss-loader": "^4.0.2",
-    "pug": "^3.0.0",
-    "sass-loader": "7.1",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "pug": "^3.0.0"
   },
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js --delay 2",
@@ -34,6 +28,11 @@
     "build:assets": "cross-env WEBPACK_ENV=production webpack"
   },
   "devDependencies": {
-    "mini-css-extract-plugin": "^0.11.2"
+    "css-loader": "^4.3.0",
+    "mini-css-extract-plugin": "^0.11.2",
+    "postcss-loader": "^4.0.2",
+    "sass-loader": "^10.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
