@@ -1,0 +1,15 @@
+header {
+    background-color: $sexyColor;
+    margin-bottom: 3rem;
+    .header__wrapper {
+        background-color: saddlebrown;
+        padding: 1rem 0rem;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 90rem;
+        display: grid;  //https://studiomeal.com/archives/533 <-grid는 이걸한번 볼만한듯
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center; // align-items: 수직정렬;
+        
+    }
+}
