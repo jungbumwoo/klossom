@@ -1,15 +1,34 @@
-header {
-    background-color: $sexyColor;
-    margin-bottom: 3rem;
-    .header__wrapper {
-        background-color: saddlebrown;
+.header {
+    background-color: blueviolet;
+    margin-bottom: 4rem;
+    .header__wrapper{
+        background-color: olive;
         padding: 1rem 0rem;
-        width: 100%;
-        margin: 0 auto;
         max-width: 90rem;
-        display: grid;  //https://studiomeal.com/archives/533 <-grid는 이걸한번 볼만한듯
+        margin: 0 auto;
+        align-items: center;
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
-        align-items: center; // align-items: 수직정렬;
-        
+        .header__column{
+            background-color: palegoldenrod;
+            i {
+                color: brown;
+                font-size: 2.0rem;
+            }
+            form {
+                width: 100%;
+                input {
+                    padding: 0.5rem 0.6rem;
+                    width: 100%;
+                    font-size: 1rem;
+                    color: chartreuse;
+                    font-weight: 600;
+                    &::placeholder {
+                        font-weight: 300;
+                        color: rgba(0, 0, 0, 0.7);
+                    }
+                }
+            }
+        }
     }
 }
