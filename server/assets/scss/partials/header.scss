@@ -1,26 +1,42 @@
 .header {
-    background-color: blueviolet;
-    margin-bottom: 4rem;
+    background-color: rebeccapurple;
+    margin-bottom: 50px;
     .header__wrapper{
-        background-color: olive;
-        padding: 1rem 0rem;
-        max-width: 90rem;
+        width: 100%;
+        padding: 5px 0px;
+        max-width: 1200px;
         margin: 0 auto;
         align-items: center;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         .header__column{
-            background-color: palegoldenrod;
             i {
-                color: brown;
-                font-size: 2.0rem;
+                color: white;
+                font-size: 30px;
+            }
+            &:nth-child(2) {
+                width: 100%;
+                justify-self: center;
+            }
+            &:last-child {
+                justify-self: end;
+            }
+            ul {
+                display: flex;
+                color: white;
+                font-weight: 600;
+                text-transform: uppercase;
+                li:not(:last-child){
+                    margin-right: 15px;
+                }
             }
             form {
                 width: 100%;
                 input {
-                    padding: 0.5rem 0.6rem;
+                    padding: 7px 10px;
                     width: 100%;
-                    font-size: 1rem;
+                    border-radius: 5px;
+                    font-size: 14px;
                     color: chartreuse;
                     font-weight: 600;
                     &::placeholder {

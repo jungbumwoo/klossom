@@ -1,10 +1,12 @@
 //Global
 const HOME = "/";
 //USERS
+const ME = "/me";
 const USERS = "/users";
 const USER_DETAIL = "/:id";
 const JOIN = "/join";
 const LOGIN = "/login";
+const LOGOUT = "/logout";
 
 //VIDEOS
 const VIDEO = "/videos";
@@ -16,6 +18,7 @@ const DELETE_VIDEO = "/:id/delete";
 
 const routes = {
   home: HOME,
+  me: ME,
   users: USERS,
   userDetail: (id) => {
     if (id) {
@@ -26,6 +29,7 @@ const routes = {
   },
   join: JOIN,
   login: LOGIN,
+  logout: LOGOUT,
   video: VIDEO,
   search: SEARCH,
   upload: UPLOAD,
