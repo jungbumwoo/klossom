@@ -64,7 +64,7 @@ export const getEditVideo = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    res.render("editVideo", { video });
+    res.render("editVideo", { pageTitle: "Edit", video });
   } catch (err) {
     console.log(`err is occured. at getEditVideo at videoController`);
     console.log(err);
