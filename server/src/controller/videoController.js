@@ -68,7 +68,7 @@ export const getEditVideo = async (req, res) => {
   } catch (err) {
     console.log(`err is occured. at getEditVideo at videoController`);
     console.log(err);
-    res.render("editVideo");
+    res.render("home");
   }
 };
 
