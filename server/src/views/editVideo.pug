@@ -4,20 +4,7 @@ block content
     .form-container
         form(action=routes.editVideo(video.id), method="post")
             input(type="text", placeholder="Title", name="title", value=video.title)
+            textarea(name="description", placeholder="Description")=video.description
             input(type="submit", value="Update Video")
         a.form-container__link(href=routes.deleteVideo(video.id))
             button.delete Delete Video
-
-    // textarea(name="description", placeholder="Description")=video.description
-
-
-    //.editVideo
-        h5.abc=video.title
-        span.fasdf=video.description
-    //.form-container
-        form(action=routes.editVideo(video.id), method="post")
-            input(type="text", placeholder=`${video.title}`, name="title", required=true)
-            textarea(placeholder=`${video.description}`, name="description", required=true)
-            input(type="submit", value="Edit")
-    //a.form-container__link(href=routes.deleteVideo(video.id))
-        button.delete Delete Video  -->
