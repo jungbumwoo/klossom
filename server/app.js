@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import passport from "passport";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import logger from "morgan";
@@ -8,6 +9,8 @@ import path from "path";
 import routes from "./src/routers/routes";
 import globalRouter from "./src/routers/globalRouter/globalRouter";
 import videoRouter from "./src/routers/VideoRouter/videoRouter";
+
+import "./passport";
 
 const app = express();
 
@@ -23,6 +26,10 @@ app.set("view engine", "pug"); // (1)
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
 app.set("views", path.join(__dirname, "/src/views")); // (2)
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(localMiddleware);
 
 app.use(routes.home, globalRouter);
