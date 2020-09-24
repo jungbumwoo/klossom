@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import logger from "morgan";
 import { localMiddleware } from "./middlewares";
+import { mongoose } from "mongoose";
+import MongoStore from "connect-mongo";
 import path from "path";
 import routes from "./src/routers/routes";
 import globalRouter from "./src/routers/globalRouter/globalRouter";
@@ -14,6 +16,8 @@ import videoRouter from "./src/routers/VideoRouter/videoRouter";
 import "./passport";
 
 const app = express();
+
+const CokieStore = MongoStore(session);
 
 const PORT = 3000;
 
@@ -31,7 +35,8 @@ app.use(
     session({
         secret: process.env.COOKIE_SECRET,
         resave: true,
-        saveUninitialized: false
+        saveUninitialized: false,
+        store: new CokieStore({ mongooseConnection: mongoose.connection })
     })
 );
 
