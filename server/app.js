@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import passport from "passport";
+import session from "express-session";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import logger from "morgan";
@@ -26,6 +27,13 @@ app.set("view engine", "pug"); // (1)
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
 app.set("views", path.join(__dirname, "/src/views")); // (2)
+app.use(
+    session({
+        secret: process.env.COOKIE_SECRET,
+        resave: true,
+        saveUninitialized: false
+    })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());

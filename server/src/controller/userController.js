@@ -12,6 +12,7 @@ export const postJoin = async (req, res, next) => {
     const {
         body: { name, email, password, password2 }
     } = req;
+    console.log(name, email);
     if (password !== password2) {
         console.log(`password !== password2`);
         res.status(400);
