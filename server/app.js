@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import logger from "morgan";
 import { localMiddleware } from "./middlewares";
-import { mongoose } from "mongoose";
+import mongoose from "mongoose";
 import MongoStore from "connect-mongo";
 import path from "path";
 import routes from "./src/routers/routes";
@@ -32,12 +32,12 @@ app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
 app.set("views", path.join(__dirname, "/src/views")); // (2)
 app.use(
-    session({
-        secret: process.env.COOKIE_SECRET,
-        resave: true,
-        saveUninitialized: false,
-        store: new CokieStore({ mongooseConnection: mongoose.connection })
-    })
+  session({
+    secret: process.env.COOKIE_SECRET,
+    resave: true,
+    saveUninitialized: false,
+    store: new CokieStore({ mongooseConnection: mongoose.connection })
+  })
 );
 
 app.use(passport.initialize());
