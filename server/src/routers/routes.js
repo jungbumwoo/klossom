@@ -16,6 +16,12 @@ const EDIT_VIDEO = "/:id/edit";
 const UPLOAD = "/upload";
 const DELETE_VIDEO = "/:id/delete";
 
+//auth 
+const AUTH_GITGUB = "/auth/github";
+const AUTH_GITGUB_CALLBACK = "/auth/github/callback";
+
+
+
 const routes = {
   home: HOME,
   me: ME,
@@ -30,6 +36,8 @@ const routes = {
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
+  github: AUTH_GITGUB,
+  githubcallback: AUTH_GITGUB_CALLBACK,
   video: VIDEO,
   search: SEARCH,
   upload: UPLOAD,
