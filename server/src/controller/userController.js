@@ -2,8 +2,6 @@ import passport from "passport";
 import routes from "../routers/routes";
 import User from "../../models/User";
 
-
-
 export const getJoin = (req, res) => {
     res.render("join", { pageTitle: "Join"});
 }
@@ -67,13 +65,14 @@ export const logout = (req, res) => {
 };
 
 export const githubLoginCallback = async(_, __, profile, cb) => {
-    console.log(`githubLoginCallback 실행`);
     const {
         _json : { id, avatar_url: avatarUrl, name, email }
     } = profile;
+    console.log(`Here, ${avatarUrl}`);
     try {
         const user = await User.findOne({ email });
         if (user) {
+            user.avatarUrl = avatarUrl;
             user.githubId = id;
             user.save();
             return cb(null, user);
@@ -88,6 +87,10 @@ export const githubLoginCallback = async(_, __, profile, cb) => {
     } catch(error) {
         return cb(error);
     }
+};
+
+export const facebookLoginCallback = async(accessToken, refreshToken, profile, done) => {
+    console.log(accessToken, refreshToken, profile, done);
 };
 
 export const getMe = (req, res) => {

@@ -22,7 +22,15 @@ globalRouter.get('/auth/github',
 globalRouter.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
+    console.log(req.user);
     res.redirect('/');
 });
+
+globalRouter.get('/auth/facebook', passport.authenticate('facebook'));
+
+globalRouter.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/',
+                                      failureRedirect: '/login' }));
+
 
 export default globalRouter;
