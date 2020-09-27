@@ -8,6 +8,9 @@ const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 
+const EDIT_PROFILE = "/editprofile";
+const CHANGE_PASSWORD = "/change_password";
+
 //VIDEOS
 const VIDEO = "/videos";
 const VIDEO_DETAIL = "/:id";
@@ -36,8 +39,14 @@ const routes = {
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
+
+  editProfile: EDIT_PROFILE,
+  changePassword: CHANGE_PASSWORD,
+
   github: AUTH_GITGUB,
   githubcallback: AUTH_GITGUB_CALLBACK,
+
+
   video: VIDEO,
   search: SEARCH,
   upload: UPLOAD,

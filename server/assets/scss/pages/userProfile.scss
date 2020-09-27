@@ -1,0 +1,10 @@
+.user-profile {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .user-profile__header {
+        display: flex;
+        // still works at #7.0 User Profile
+    }
+}
