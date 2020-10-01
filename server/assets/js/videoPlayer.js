@@ -24,14 +24,8 @@ function handleVolumeClick() {
     }
 }
 
-function init() {
-    playBtn.addEventListener("click", handlePlayClick);
-    volumeBtn.addEventListener("click", handleVolumeClick);
-    fullScreenBtn.addEventListener("click", goFullScreen);
-};
-
 function goFullScreen() {
-    videoContainer.webkitRequestFullScreen();
+    videoContainer.RequestFullScreen();
     fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
     fullScreenBtn.removeEventListener("click", goFullScreen);
     fullScreenBtn.addEventListener("click", exitFullScren);
@@ -40,7 +34,14 @@ function goFullScreen() {
 function exitFullScreen(){
     fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
     fullScreenBtn.addEventListener("click", goFullScreen);
-    document.webkitExitFullScreen();
+    document.ExitFullScreen();
+};
+
+function init() {
+    console.log("videoPlayer init");
+    playBtn.addEventListener("click", handlePlayClick);
+    volumeBtn.addEventListener("click", handleVolumeClick);
+    fullScreenBtn.addEventListener("click", goFullScreen);
 };
 
 if (videoContainer) {
