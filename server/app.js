@@ -22,7 +22,9 @@ const CokieStore = MongoStore(session);
 
 const PORT = 3000;
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
