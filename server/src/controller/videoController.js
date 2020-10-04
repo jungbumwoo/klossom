@@ -59,7 +59,6 @@ export const videoDetail = async (req, res) => {
     res.render("videoDetail", { pageTitle: "Video Detail", video });
   } catch (err) {
     console.log(`error is occured. in videoDetail, videoController!`);
-    console.log(err);
     res.redirect(routes.home);
   }
 };
