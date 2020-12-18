@@ -1,6 +1,15 @@
 import axios from "axios";
 const addCommentForm = document.getElementById("jsAddComment");
 
+const addComment = comment => {
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.innerHTML = comment;
+    li.appendChild(span);
+    commentList.prepend(li);
+    increaseNumber();
+};
+
 const sendComment = async comment => {
     const videoId = window.location.href.split("/video/").[1];
     const response = await axios({
@@ -10,7 +19,9 @@ const sendComment = async comment => {
             comment
         }
     });
-    console.log(response);
+    if (response.status === 200) {
+        addComment(comment);
+    }
 }
 
 function handleSubmit(event){
